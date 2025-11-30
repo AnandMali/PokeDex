@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.ui.theme
+package com.anandmali.pokedex.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

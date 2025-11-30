@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.di
+package com.anandmali.pokedex.data.di
 
 import com.anandmali.pokedex.BuildConfig
 import com.anandmali.pokedex.data.repository.ListPagingSource

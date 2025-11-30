@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.anandmali.pokedex.pokedetails
+package com.anandmali.pokedex.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -38,6 +38,10 @@ import coil.request.ImageRequest
 import com.anandmali.pokedex.data.source.network.createImageUrl
 import com.anandmali.pokedex.data.source.network.response.PokeDetailsResponse
 import com.anandmali.pokedex.data.Resource
+import com.anandmali.pokedex.presentation.ui.components.PokemonBaseStats
+import com.anandmali.pokedex.presentation.ui.components.PokemonSize
+import com.anandmali.pokedex.presentation.ui.components.PokemonType
+import com.anandmali.pokedex.presentation.vm.DetailViewModel
 
 @Composable
 fun DetailsScreen(

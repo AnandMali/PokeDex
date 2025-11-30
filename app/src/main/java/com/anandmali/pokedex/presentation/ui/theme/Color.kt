@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.ui.theme
+package com.anandmali.pokedex.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

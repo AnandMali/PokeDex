@@ -1,4 +1,4 @@
-package com.anandmali.pokedex
+package com.anandmali.pokedex.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,9 +9,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.anandmali.pokedex.pokedetails.DetailsScreen
-import com.anandmali.pokedex.pokelist.ListScreen
-import com.anandmali.pokedex.ui.theme.PokeDexTheme
+import com.anandmali.pokedex.presentation.screens.DetailsScreen
+import com.anandmali.pokedex.presentation.screens.ListScreen
+import com.anandmali.pokedex.presentation.ui.theme.PokeDexTheme
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 

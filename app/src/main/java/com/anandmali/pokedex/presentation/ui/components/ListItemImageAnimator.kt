@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.pokelist
+package com.anandmali.pokedex.presentation.ui.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring

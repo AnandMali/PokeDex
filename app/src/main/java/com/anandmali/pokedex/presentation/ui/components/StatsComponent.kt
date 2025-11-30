@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.pokedetails
+package com.anandmali.pokedex.presentation.ui.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing

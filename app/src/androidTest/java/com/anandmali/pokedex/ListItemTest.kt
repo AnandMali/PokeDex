@@ -4,7 +4,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import com.anandmali.pokedex.data.source.network.PokemonViewDTO
-import com.anandmali.pokedex.pokelist.PokemonListItem
+import com.anandmali.pokedex.presentation.screens.PokemonListItem
 import org.junit.Rule
 import org.junit.Test
 

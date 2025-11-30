@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.pokelist
+package com.anandmali.pokedex.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

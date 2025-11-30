@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 
-package com.anandmali.pokedex.pokelist
+package com.anandmali.pokedex.presentation.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +33,9 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.R
 import com.anandmali.pokedex.data.source.network.PokemonViewDTO
-import com.anandmali.pokedex.ui.theme.Purple40
+import com.anandmali.pokedex.presentation.ui.components.ListItemImageAnimator
+import com.anandmali.pokedex.presentation.ui.theme.Purple40
+import com.anandmali.pokedex.presentation.vm.ListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
