@@ -32,7 +32,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.R
-import com.anandmali.pokedex.data.source.network.PokemonViewDTO
+import com.anandmali.pokedex.core.data.network.PokemonViewDTO
 import com.anandmali.pokedex.presentation.ui.components.ListItemImageAnimator
 import com.anandmali.pokedex.presentation.ui.theme.Purple40
 import com.anandmali.pokedex.presentation.vm.ListViewModel
