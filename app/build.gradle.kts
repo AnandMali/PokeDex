@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.anandmali.pokedex"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.anandmali.pokedex"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -55,6 +55,9 @@ android {
 
 dependencies {
 
+    // module
+    implementation(project(":core-data"))
+
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
@@ -83,17 +86,13 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     kaptAndroidTest(libs.hilt.compiler)
 
-    //Network retrofit and okHTTP testing
-    implementation(libs.retrofit.core)
-    implementation(libs.gson.convertor)
-    implementation(libs.okhttp.loggin)
-    implementation(libs.okhttp.mock.server)
-    implementation(libs.okhttp.profiler)
-
     implementation(libs.navigation)
     implementation(libs.coil)
 
+    // hilt navigation compose
     implementation(libs.hilt.nav.compose)
 
     implementation(libs.paging.compose)
+
+    implementation(libs.androidx.material.icons.extended)
 }

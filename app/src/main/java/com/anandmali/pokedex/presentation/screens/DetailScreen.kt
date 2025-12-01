@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -35,9 +35,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.anandmali.pokedex.data.source.network.createImageUrl
-import com.anandmali.pokedex.data.source.network.response.PokeDetailsResponse
-import com.anandmali.pokedex.data.Resource
+import com.anandmali.pokedex.core.data.Resource
+import com.anandmali.pokedex.core.data.network.createImageUrl
+import com.anandmali.pokedex.core.data.network.response.PokeDetailsResponse
 import com.anandmali.pokedex.presentation.ui.components.PokemonBaseStats
 import com.anandmali.pokedex.presentation.ui.components.PokemonSize
 import com.anandmali.pokedex.presentation.ui.components.PokemonType
@@ -59,7 +59,7 @@ fun DetailsScreen(
             TopAppBar(
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = null)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                     }
                 },
                 title = {

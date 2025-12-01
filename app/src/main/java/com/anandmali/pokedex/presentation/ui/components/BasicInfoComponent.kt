@@ -20,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.anandmali.pokedex.R
-import com.anandmali.pokedex.data.source.network.response.Type
+import com.anandmali.pokedex.core.data.network.response.Type
 
 @Composable
 fun PokemonType(types: List<Type>) {

@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.anandmali.pokedex.data.repository.PokeRepository
-import com.anandmali.pokedex.data.source.network.PokemonViewDTO
-import com.anandmali.pokedex.data.source.network.toViewData
+import com.anandmali.pokedex.core.data.network.PokemonViewDTO
+import com.anandmali.pokedex.core.data.network.toViewData
+import com.anandmali.pokedex.core.data.repository.PokeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
