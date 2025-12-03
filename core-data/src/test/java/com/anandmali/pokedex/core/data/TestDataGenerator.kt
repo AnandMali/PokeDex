@@ -1,6 +1,6 @@
 package com.anandmali.pokedex.core.data
 
-import com.anandmali.pokedex.core.data.network.PokemonViewDTO
+import com.anandmali.pokedex.core.data.model.PokemonViewDTO
 
 
 internal fun mockPokeViewData(

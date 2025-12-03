@@ -9,7 +9,6 @@ lifecycle-runtime-ktx = "2.10.0"
 activity-compose = "1.12.0"
 compose-bom = "2025.11.01"
 hilt = "2.57.2"
-hiltExt = "1.3.0"
 materialIconsExtended = "1.7.8"
 retrofit = "3.0.0"
 okhttp-loggin = "5.3.2"
@@ -42,8 +41,6 @@ material3 = { group = "androidx.compose.material3", name = "material3" }
 hilt-android-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
-hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
-hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 gson-convertor = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp-loggin = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp-loggin" }

@@ -1,0 +1,33 @@
+//package com.anandmali.pokedex.core.data.repository
+//
+//import androidx.paging.Pager
+//import androidx.paging.PagingConfig
+//import androidx.paging.PagingData
+//import com.anandmali.pokedex.core.data.Resource
+//import com.anandmali.pokedex.core.data.remote.PokeApi
+//import com.anandmali.pokedex.core.network.service.info.model.PokeDetailsResponse
+//import com.anandmali.pokedex.core.data.remote.response.Pokemon
+//import kotlinx.coroutines.flow.Flow
+//import javax.inject.Inject
+//
+//class InfoRepositoryImpl @Inject constructor(
+//    private val pokeApi: PokeApi,
+//    private val pagingSource: ListPagingSource
+//) : InfoRepository {
+//
+//    override fun getPokeList(): Flow<PagingData<Pokemon>> {
+//        return Pager(
+//            config = PagingConfig(pageSize = PAGING_SIZE, enablePlaceholders = false),
+//            pagingSourceFactory = { pagingSource }
+//        ).flow
+//    }
+//
+//    override suspend fun getPokemonInfo(pokemonName: String): Resource<PokeDetailsResponse> {
+//        val response = try {
+//            pokeApi.getPokemonInfo(pokemonName)
+//        } catch (e: Exception) {
+//            return Resource.Error("An unknown error occurred.")
+//        }
+//        return Resource.Success(response)
+//    }
+//}

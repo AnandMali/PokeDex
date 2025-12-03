@@ -36,8 +36,8 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.core.data.Resource
-import com.anandmali.pokedex.core.data.network.createImageUrl
-import com.anandmali.pokedex.core.data.network.response.PokeDetailsResponse
+import com.anandmali.pokedex.core.data.model.createImageUrl
+import com.anandmali.pokedex.core.data.remote.response.PokeDetailsResponse
 import com.anandmali.pokedex.presentation.ui.components.PokemonBaseStats
 import com.anandmali.pokedex.presentation.ui.components.PokemonSize
 import com.anandmali.pokedex.presentation.ui.components.PokemonType

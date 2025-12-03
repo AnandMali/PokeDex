@@ -2,11 +2,14 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
+
 }
 
 android {
-    namespace = "com.anandmali.pokedex.core.data"
-    compileSdk = 36
+    namespace = "com.anandmali.pokedex.core.network"
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         minSdk = 24
@@ -25,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
     buildFeatures {
         buildConfig = true
@@ -37,10 +40,6 @@ android {
 }
 
 dependencies {
-
-    // module
-    implementation(project(":core-network"))
-
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -54,9 +53,6 @@ dependencies {
     implementation(libs.okhttp.loggin)
     implementation(libs.okhttp.mock.server)
     implementation(libs.okhttp.profiler)
-
-    // paging
-    implementation(libs.paging.compose)
 
     // hilt
     implementation(libs.hilt.android.core)

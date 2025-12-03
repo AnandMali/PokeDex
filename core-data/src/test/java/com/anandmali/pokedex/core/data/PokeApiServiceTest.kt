@@ -1,7 +1,6 @@
 package com.anandmali.pokedex.core.data
 
-import com.anandmali.pokedex.core.data.network.PokeApi
-import com.anandmali.pokedex.core.data.repository.PokeRepositoryImpl
+import com.anandmali.pokedex.core.data.repository.InfoRepositoryImpl
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.runBlocking
@@ -26,7 +25,7 @@ class PokeDetailsRepositoryTest {
 
     private val pokeApiService = retrofit.create(PokeApi::class.java)
 
-    private val sut = PokeRepositoryImpl(pokeApiService)
+    private val sut = InfoRepositoryImpl(pokeApiService)
 
     @After
     fun tearDown() {
