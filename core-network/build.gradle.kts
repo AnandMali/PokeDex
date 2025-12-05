@@ -40,6 +40,10 @@ android {
 }
 
 dependencies {
+
+    // module dependencies
+    implementation(project(":core-model"))
+
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

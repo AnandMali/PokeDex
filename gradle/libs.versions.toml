@@ -21,9 +21,14 @@ paging_version = "3.3.6"
 appcompat = "1.7.1"
 material = "1.13.0"
 ksp = "2.3.3"
+androidx-room = "2.8.4"
+roomCompilerProcessingTesting = "2.8.4"
 
 [libraries]
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidx-room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
@@ -52,6 +57,7 @@ hilt-nav-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", 
 paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging_version" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-room-compiler-processing-testing = { group = "androidx.room", name = "room-compiler-processing-testing", version.ref = "roomCompilerProcessingTesting" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

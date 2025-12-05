@@ -55,7 +55,7 @@ android {
 
 dependencies {
 
-    // module
+    // module dependencies
     implementation(project(":core-data"))
 
     implementation(libs.core.ktx)

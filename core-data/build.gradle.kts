@@ -38,8 +38,10 @@ android {
 
 dependencies {
 
-    // module
+    // module dependencies
     implementation(project(":core-network"))
+    implementation(project(":core-model"))
+    implementation(project(":core-database"))
 
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)

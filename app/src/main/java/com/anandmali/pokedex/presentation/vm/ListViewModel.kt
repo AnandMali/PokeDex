@@ -7,10 +7,11 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.anandmali.pokedex.core.data.model.PokemonViewDTO
 import com.anandmali.pokedex.core.data.model.toViewData
-import com.anandmali.pokedex.core.data.repository.InfoRepository
+import com.anandmali.pokedex.core.data.repository.info.InfoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,12 +25,14 @@ class ListViewModel @Inject constructor(
         pokemonListStatus = getPokeList().cachedIn(viewModelScope)
     }
 
-    private fun getPokeList(): Flow<PagingData<PokemonViewDTO>> {
-        return infoRepository.getPokeList()
-            .map { data ->
-                data.map {
-                    it.toViewData()
+    private suspend fun getPokeList(): Flow<PagingData<PokemonViewDTO>> {
+        viewModelScope.launch {
+            infoRepository.getPokeList()
+                .map { data ->
+                    data.map {
+                        it.toViewData()
+                    }
                 }
-            }
+        }
     }
 }

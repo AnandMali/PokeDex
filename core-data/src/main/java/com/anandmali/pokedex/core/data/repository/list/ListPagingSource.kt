@@ -2,7 +2,7 @@ package com.anandmali.pokedex.core.data.repository.list
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.anandmali.pokedex.core.data.model.Pokemon
+import com.anandmali.pokedex.core.model.list.Pokemon
 import com.anandmali.pokedex.core.network.service.list.dataSource.ListRemoteDataSource
 import javax.inject.Inject
 

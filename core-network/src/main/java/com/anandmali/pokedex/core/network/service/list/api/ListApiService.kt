@@ -1,6 +1,6 @@
 package com.anandmali.pokedex.core.network.service.list.api
 
-import com.anandmali.pokedex.core.network.service.list.model.PokeList
+import com.anandmali.pokedex.core.model.list.PokeList
 import retrofit2.http.GET
 import retrofit2.http.Query
 
