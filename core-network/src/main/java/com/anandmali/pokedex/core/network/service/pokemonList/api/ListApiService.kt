@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.core.network.service.list.api
+package com.anandmali.pokedex.core.network.service.pokemonList.api
 
 import com.anandmali.pokedex.core.model.pokemonList.network.PokemonListResponse
 import retrofit2.http.GET

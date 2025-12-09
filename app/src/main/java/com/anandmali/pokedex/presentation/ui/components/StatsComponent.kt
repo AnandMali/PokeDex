@@ -23,13 +23,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.anandmali.pokedex.core.data.remote.response.PokeDetailsResponse
-import com.anandmali.pokedex.core.data.remote.response.Stat
+import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
+import com.anandmali.pokedex.core.model.pokemonDetails.network.Stat
 import kotlin.math.roundToInt
 
 @Composable
 fun PokemonBaseStats(
-    pokeDetails: PokeDetailsResponse,
+    pokeDetails: PokemonDetailsResponse,
     modifier: Modifier
 ) {
     Column(
@@ -64,7 +64,7 @@ internal fun PokemonStatItem(
         animationProgress.animateTo(
             targetValue = 1f,
             animationSpec = tween(
-                durationMillis = 8 * statResponse.baseStat,
+                durationMillis = 8 * statResponse.base_stat,
                 easing = LinearEasing
             )
         )
@@ -75,7 +75,7 @@ internal fun PokemonStatItem(
         modifier = modifier
     ) {
 
-        val progress = statResponse.baseStat.toFloat() / statResponse.maxValue.toFloat()
+        val progress = statResponse.base_stat.toFloat() / 100.toFloat()
         val animatedProgress = progress * animationProgress.value
 
         val progressColor = MaterialTheme.colorScheme.primary
@@ -85,7 +85,9 @@ internal fun PokemonStatItem(
             text = statResponse.name,
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.weight(.3f).padding(end = 8.dp),
+            modifier = Modifier
+                .weight(.3f)
+                .padding(end = 8.dp),
             maxLines = 1
         )
 
@@ -113,7 +115,7 @@ internal fun PokemonStatItem(
                 }
         ) {
             Text(
-                text = "${(statResponse.baseStat * animationProgress.value).roundToInt()}",
+                text = "${(statResponse.base_stat * animationProgress.value).roundToInt()}",
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold,

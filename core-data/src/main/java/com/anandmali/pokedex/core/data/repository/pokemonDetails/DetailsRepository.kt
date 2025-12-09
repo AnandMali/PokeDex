@@ -1,9 +1,9 @@
-package com.anandmali.pokedex.core.data.repository.info
+package com.anandmali.pokedex.core.data.repository.pokemonDetails
 
 import com.anandmali.pokedex.core.data.Resource
 import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
 
-interface InfoRepository {
+interface DetailsRepository {
     suspend fun getPokemonInfo(
         name: String
     ): Resource<PokemonDetailsResponse>

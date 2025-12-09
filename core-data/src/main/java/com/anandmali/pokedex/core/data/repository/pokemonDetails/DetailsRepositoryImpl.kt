@@ -1,18 +1,18 @@
-package com.anandmali.pokedex.core.data.repository.info
+package com.anandmali.pokedex.core.data.repository.pokemonDetails
 
 import com.anandmali.pokedex.core.data.Resource
 import com.anandmali.pokedex.core.database.pokemonDetails.dataSource.DetailsLocalDataSource
 import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
-import com.anandmali.pokedex.core.network.service.info.datasource.InfoRemoteDataSource
+import com.anandmali.pokedex.core.network.service.pokemonDetails.datasource.DetailsRemoteDataSource
 import javax.inject.Inject
 
-class InfoRepositoryImpl @Inject constructor(
-    private val infoRemoteDataSource: InfoRemoteDataSource,
+class DetailsRepositoryImpl @Inject constructor(
+    private val detailsRemoteDataSource: DetailsRemoteDataSource,
     private val detailsLocalDataSource: DetailsLocalDataSource
-) : InfoRepository {
+) : DetailsRepository {
     override suspend fun getPokemonInfo(name: String): Resource<PokemonDetailsResponse> {
         val response = try {
-            infoRemoteDataSource.getPokemonInfo(name)
+            detailsRemoteDataSource.getPokemonInfo(name)
         } catch (e: Exception) {
             return Resource.Error("An unknown error occurred. $e")
         }

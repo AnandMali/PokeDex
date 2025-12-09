@@ -1,7 +1,7 @@
-package com.anandmali.pokedex.core.network.di.list
+package com.anandmali.pokedex.core.network.di.pokemonList
 
-import com.anandmali.pokedex.core.network.service.list.dataSource.ListRemoteDataSource
-import com.anandmali.pokedex.core.network.service.list.dataSource.ListRemoteDataSourceImpl
+import com.anandmali.pokedex.core.network.service.pokemonList.dataSource.ListRemoteDataSource
+import com.anandmali.pokedex.core.network.service.pokemonList.dataSource.ListRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

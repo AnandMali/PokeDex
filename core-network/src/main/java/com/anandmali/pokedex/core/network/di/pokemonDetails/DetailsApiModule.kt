@@ -1,6 +1,6 @@
-package com.anandmali.pokedex.core.network.di.info
+package com.anandmali.pokedex.core.network.di.pokemonDetails
 
-import com.anandmali.pokedex.core.network.service.info.api.InfoApiService
+import com.anandmali.pokedex.core.network.service.pokemonDetails.api.DetailsApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,12 +10,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object InfoApiModule {
+object DetailsApiModule {
     @Singleton
     @Provides
     fun provideInfoAPi(
         retrofit: Retrofit
-    ): InfoApiService {
-        return retrofit.create(InfoApiService::class.java)
+    ): DetailsApiService {
+        return retrofit.create(DetailsApiService::class.java)
     }
 }

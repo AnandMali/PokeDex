@@ -37,7 +37,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.core.data.Resource
 import com.anandmali.pokedex.core.data.model.createImageUrl
-import com.anandmali.pokedex.core.data.remote.response.PokeDetailsResponse
+import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
 import com.anandmali.pokedex.presentation.ui.components.PokemonBaseStats
 import com.anandmali.pokedex.presentation.ui.components.PokemonSize
 import com.anandmali.pokedex.presentation.ui.components.PokemonType
@@ -49,9 +49,10 @@ fun DetailsScreen(
     navController: NavController,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
-    val pokeDetails = produceState<Resource<PokeDetailsResponse>>(initialValue = Resource.Loading()) {
-        value = viewModel.getPokemonInfo(pokemonName)
-    }.value
+    val pokeDetails =
+        produceState<Resource<PokemonDetailsResponse>>(initialValue = Resource.Loading()) {
+            // TODO fetch pokemon details
+        }.value
 
 
     Scaffold(
@@ -92,7 +93,7 @@ fun DetailsScreen(
 
 @Composable
 fun PokemonDetailStateWrapper(
-    pokemonInfo: Resource<PokeDetailsResponse>,
+    pokemonInfo: Resource<PokemonDetailsResponse>,
     modifier: Modifier = Modifier
 ) {
     when (pokemonInfo) {
@@ -131,7 +132,7 @@ fun PokemonDetailStateWrapper(
 
 @Composable
 fun PokemonDetailSection(
-    pokeDetails: PokeDetailsResponse,
+    pokeDetails: PokemonDetailsResponse,
     modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()

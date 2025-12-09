@@ -1,9 +1,9 @@
-package com.anandmali.pokedex.core.data.repository.list
+package com.anandmali.pokedex.core.data.repository.pokemonList
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.anandmali.pokedex.core.model.pokemonList.network.Pokemon
-import com.anandmali.pokedex.core.network.service.list.dataSource.ListRemoteDataSource
+import com.anandmali.pokedex.core.network.service.pokemonList.dataSource.ListRemoteDataSource
 import javax.inject.Inject
 
 const val PAGING_SIZE = 10

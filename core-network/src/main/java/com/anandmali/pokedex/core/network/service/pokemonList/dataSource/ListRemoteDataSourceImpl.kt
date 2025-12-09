@@ -1,7 +1,7 @@
-package com.anandmali.pokedex.core.network.service.list.dataSource
+package com.anandmali.pokedex.core.network.service.pokemonList.dataSource
 
 import com.anandmali.pokedex.core.model.pokemonList.network.PokemonListResponse
-import com.anandmali.pokedex.core.network.service.list.api.ListApiService
+import com.anandmali.pokedex.core.network.service.pokemonList.api.ListApiService
 import com.anandmali.pokedex.core.model.util.DataError
 import com.anandmali.pokedex.core.model.util.DataResult
 import kotlinx.coroutines.CoroutineDispatcher

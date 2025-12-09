@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.core.network.service.list.dataSource
+package com.anandmali.pokedex.core.network.service.pokemonList.dataSource
 
 import com.anandmali.pokedex.core.model.pokemonList.network.PokemonListResponse
 import com.anandmali.pokedex.core.model.util.DataError

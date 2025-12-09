@@ -1,10 +1,10 @@
-package com.anandmali.pokedex.core.network.service.info.api
+package com.anandmali.pokedex.core.network.service.pokemonDetails.api
 
 import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface InfoApiService {
+interface DetailsApiService {
     @GET("pokemon/{name}")
     suspend fun getPokemonInfo(
         @Path("name") name: String

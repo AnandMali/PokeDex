@@ -1,6 +1,6 @@
-package com.anandmali.pokedex.core.network.di.list
+package com.anandmali.pokedex.core.network.di.pokemonList
 
-import com.anandmali.pokedex.core.network.service.list.api.ListApiService
+import com.anandmali.pokedex.core.network.service.pokemonList.api.ListApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

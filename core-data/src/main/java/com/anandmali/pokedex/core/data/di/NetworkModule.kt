@@ -1,13 +1,8 @@
 package com.anandmali.pokedex.core.data.di
 
-import com.anandmali.pokedex.core.data.repository.list.ListPagingSource
-import com.anandmali.pokedex.core.data.repository.InfoRepository
-import com.anandmali.pokedex.core.data.repository.InfoRepositoryImpl
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -46,14 +41,14 @@ class NetworkModule {
 //        return retrofit.create(PokeApi::class.java)
 //    }
 
-    @Singleton
-    @Provides
-    fun providePokeRepository(
-        apiService: PokeApi,
-        pagingSource: ListPagingSource
-    ): InfoRepository {
-        return InfoRepositoryImpl(apiService, pagingSource)
-    }
+//    @Singleton
+//    @Provides
+//    fun providePokeRepository(
+//        apiService: PokeApi,
+//        pagingSource: ListPagingSource
+//    ): InfoRepository {
+//        return InfoRepositoryImpl(apiService, pagingSource)
+//    }
 
 //    @Singleton
 //    @Provides

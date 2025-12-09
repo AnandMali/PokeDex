@@ -1,7 +1,7 @@
-package com.anandmali.pokedex.core.network.service.info.datasource
+package com.anandmali.pokedex.core.network.service.pokemonDetails.datasource
 
 import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
-import com.anandmali.pokedex.core.network.service.info.api.InfoApiService
+import com.anandmali.pokedex.core.network.service.pokemonDetails.api.DetailsApiService
 import com.anandmali.pokedex.core.model.util.DataError
 import com.anandmali.pokedex.core.model.util.DataResult
 import kotlinx.coroutines.CoroutineDispatcher
@@ -10,16 +10,16 @@ import okio.IOException
 import retrofit2.HttpException
 import javax.inject.Inject
 
-class InfoRemoteDataSourceImpl @Inject constructor(
+class DetailsRemoteDataSourceImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher,
-    private val infoApiService: InfoApiService
-) : InfoRemoteDataSource {
+    private val detailsApiService: DetailsApiService
+) : DetailsRemoteDataSource {
     override suspend fun getPokemonInfo(
         name: String
     ): DataResult<PokemonDetailsResponse, DataError> {
         return try {
             withContext(ioDispatcher) {
-                val response = infoApiService.getPokemonInfo(name)
+                val response = detailsApiService.getPokemonInfo(name)
                 DataResult.Success(response)
             }
         } catch (e: HttpException) {

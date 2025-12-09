@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
-
 package com.anandmali.pokedex.presentation.screens
 
 import androidx.compose.foundation.layout.Box
@@ -28,7 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.R
@@ -41,24 +38,24 @@ import com.anandmali.pokedex.presentation.vm.ListViewModel
 @Composable
 fun ListScreen(
     navController: NavHostController,
-//    listViewModel: ListViewModel = hiltViewModel()
+    listViewModel: ListViewModel = hiltViewModel()
 ) {
 
 //    val pokeList = listViewModel.pokemonListStatus.collectAsLazyPagingItems()
-//
-//    Surface(
-//        color = MaterialTheme.colorScheme.onSurface,
-//        contentColor = Purple40
-//    ) {
-//        Scaffold(
-//            topBar = { TopBar() },
-//            content = { innerPadding ->
-//                LazyColumn(
-//                    modifier = Modifier
-//                        .padding(8.dp)
-//                        .fillMaxWidth(),
-//                    contentPadding = innerPadding
-//                ) {
+
+    Surface(
+        color = MaterialTheme.colorScheme.onSurface,
+        contentColor = Purple40
+    ) {
+        Scaffold(
+            topBar = { TopBar() },
+            content = { innerPadding ->
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth(),
+                    contentPadding = innerPadding
+                ) {
 //                    items(count = pokeList.itemCount) { index ->
 //                        pokeList[index]?.let {
 //                            PokemonListItem(it) {
@@ -66,10 +63,10 @@ fun ListScreen(
 //                            }
 //                        }
 //                    }
-//                }
-//            }
-//        )
-//    }
+                }
+            }
+        )
+    }
 
 }
 
