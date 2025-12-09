@@ -2,37 +2,37 @@ package com.anandmali.pokedex.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
-import androidx.paging.map
-import com.anandmali.pokedex.core.data.model.PokemonViewDTO
-import com.anandmali.pokedex.core.data.model.toViewData
-import com.anandmali.pokedex.core.data.repository.info.InfoRepository
+import com.anandmali.pokedex.core.data.repository.list.ListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ListViewModel @Inject constructor(
-    private val infoRepository: InfoRepository
+    private val listRepository: ListRepository
+//    pokemonListStatus: Flow<PagingData<PokemonViewDTO>>
 ) : ViewModel() {
 
-    val pokemonListStatus: Flow<PagingData<PokemonViewDTO>>
+//    val pokemonListStatus: Flow<PagingData<PokemonViewDTO>> = pokemonListStatus
 
     init {
-        pokemonListStatus = getPokeList().cachedIn(viewModelScope)
+        viewModelScope.launch {
+            getPokeList()
+        }
     }
 
-    private suspend fun getPokeList(): Flow<PagingData<PokemonViewDTO>> {
+    private fun getPokeList() {
         viewModelScope.launch {
-            infoRepository.getPokeList()
-                .map { data ->
-                    data.map {
-                        it.toViewData()
-                    }
+            listRepository.getPokeList()
+                .collect {
+                    println("Fetched list ====> $it")
                 }
+//                .map { data ->
+//                    println("Fetched list ====> ${data.}")
+//                    data.map {
+//                        it.toViewData()
+//                    }
+//                }
         }
     }
 }

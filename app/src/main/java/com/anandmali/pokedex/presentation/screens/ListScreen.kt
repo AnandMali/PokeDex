@@ -41,35 +41,35 @@ import com.anandmali.pokedex.presentation.vm.ListViewModel
 @Composable
 fun ListScreen(
     navController: NavHostController,
-    listViewModel: ListViewModel = hiltViewModel()
+//    listViewModel: ListViewModel = hiltViewModel()
 ) {
 
-    val pokeList = listViewModel.pokemonListStatus.collectAsLazyPagingItems()
-
-    Surface(
-        color = MaterialTheme.colorScheme.onSurface,
-        contentColor = Purple40
-    ) {
-        Scaffold(
-            topBar = { TopBar() },
-            content = { innerPadding ->
-                LazyColumn(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth(),
-                    contentPadding = innerPadding
-                ) {
-                    items(count = pokeList.itemCount) { index ->
-                        pokeList[index]?.let {
-                            PokemonListItem(it) {
-                                navController.navigate("pokeDetails/${it.name}")
-                            }
-                        }
-                    }
-                }
-            }
-        )
-    }
+//    val pokeList = listViewModel.pokemonListStatus.collectAsLazyPagingItems()
+//
+//    Surface(
+//        color = MaterialTheme.colorScheme.onSurface,
+//        contentColor = Purple40
+//    ) {
+//        Scaffold(
+//            topBar = { TopBar() },
+//            content = { innerPadding ->
+//                LazyColumn(
+//                    modifier = Modifier
+//                        .padding(8.dp)
+//                        .fillMaxWidth(),
+//                    contentPadding = innerPadding
+//                ) {
+//                    items(count = pokeList.itemCount) { index ->
+//                        pokeList[index]?.let {
+//                            PokemonListItem(it) {
+//                                navController.navigate("pokeDetails/${it.name}")
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        )
+//    }
 
 }
 
