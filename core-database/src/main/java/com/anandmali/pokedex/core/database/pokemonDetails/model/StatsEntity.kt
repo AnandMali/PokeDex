@@ -2,10 +2,12 @@ package com.anandmali.pokedex.core.database.pokemonDetails.model
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "pokemon_stats",
+    indices = [Index(value = ["pokemonId"])],
     foreignKeys = [
         ForeignKey(
             entity = DetailsEntity::class,
@@ -16,7 +18,8 @@ import androidx.room.PrimaryKey
     ]
 )
 data class StatsEntity(
-    @PrimaryKey(autoGenerate = true) val statId: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    val statId: Int = 0,
     val pokemonId: Int,
     val statName: String,
     val baseStat: Int,

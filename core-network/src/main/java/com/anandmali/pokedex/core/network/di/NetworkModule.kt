@@ -1,6 +1,6 @@
 package com.anandmali.pokedex.core.network.di
 
-import com.itkacher.okprofiler.BuildConfig
+import com.anandmali.pokedex.core.network.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

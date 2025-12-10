@@ -48,8 +48,6 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.gson.convertor)
     implementation(libs.okhttp.loggin)
-    implementation(libs.okhttp.mock.server)
-    implementation(libs.okhttp.profiler)
 
     // hilt
     implementation(libs.hilt.android.core)

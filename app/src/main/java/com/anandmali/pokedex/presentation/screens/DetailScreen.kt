@@ -73,7 +73,7 @@ fun DetailsScreen(
                         modifier = Modifier.fillMaxWidth()
                     )
                 },
-                colors = TopAppBarDefaults.largeTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent
                 )
             )
