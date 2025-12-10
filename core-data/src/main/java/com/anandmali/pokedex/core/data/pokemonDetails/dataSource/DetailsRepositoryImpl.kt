@@ -34,16 +34,12 @@ class DetailsRepositoryImpl @Inject constructor(
     }
 
     private suspend fun fetchFromRemote(pokemonName: String): DataResult<PokemonDetailsDomainData, DataError> {
-        val remotePokemonDetails = detailsRemoteDataSource.getPokemonDetails(pokemonName)
-        return remotePokemonDetails.fold(
-            onSuccess = {
+        return detailsRemoteDataSource
+            .getPokemonDetails(pokemonName)
+            .mapSuccess {
                 detailsLocalDataSource.insertPokemonDetails(it)
                 val domainData = DetailsDomainMapper.map(it)
                 return DataResult.Success(domainData)
-            },
-            onError = {
-                DataResult.Error(it)
             }
-        )
     }
 }

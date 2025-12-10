@@ -5,8 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "com.anandmali.pokedex.core.data"
-    compileSdk = 36
+    namespace = "com.anandmali.pokedex.core.domain"
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         minSdk = 24
@@ -25,33 +27,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
-    }
-    buildFeatures {
-        buildConfig = true
+        jvmTarget = "11"
     }
 }
 
 dependencies {
 
     // module dependencies
-    implementation(project(":core-network"))
+    implementation(project(":core-data"))
     implementation(project(":core-model"))
-    implementation(project(":core-database"))
 
-    // network retrofit and okHTTP
-    implementation(libs.retrofit.core)
-    implementation(libs.gson.convertor)
-    implementation(libs.okhttp.loggin)
-    implementation(libs.okhttp.mock.server)
-    implementation(libs.okhttp.profiler)
-
-    // paging
-    implementation(libs.paging.compose)
+    implementation(libs.core.ktx)
 
     // hilt
     implementation(libs.hilt.android.core)

@@ -30,16 +30,11 @@ class ListRepositoryImpl @Inject constructor(
     }
 
     private suspend fun fetchFromRemote(): DataResult<List<PokemonDomainData>, DataError> {
-        val remoteList = listRemoteDataSource.getPokemonList(10, 0)
-        return remoteList.fold(
-            onSuccess = {
+        return listRemoteDataSource
+            .getPokemonList(10, 0)
+            .mapSuccess {
                 listLocalDataSource.insertPokemonList(it.results)
-                val domainList = ListDomainMapper.map(it.results)
-                DataResult.Success(domainList)
-            },
-            onError = {
-                DataResult.Error(it)
+                ListDomainMapper.map(it.results)
             }
-        )
     }
 }
