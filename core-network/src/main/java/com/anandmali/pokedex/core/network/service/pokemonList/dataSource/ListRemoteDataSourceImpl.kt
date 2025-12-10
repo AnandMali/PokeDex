@@ -14,13 +14,13 @@ class ListRemoteDataSourceImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher,
     private val listApiService: ListApiService
 ) : ListRemoteDataSource {
-    override suspend fun getPokeList(
+    override suspend fun getPokemonList(
         limit: Int,
         offset: Int
     ): DataResult<PokemonListResponse, DataError> {
         return try {
             withContext(ioDispatcher) {
-                val response = listApiService.getPokeList(limit, offset)
+                val response = listApiService.getPokemonList(limit, offset)
                 if (response.results.isNotEmpty()) {
                     DataResult.Success(response)
                 } else

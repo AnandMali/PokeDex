@@ -29,7 +29,7 @@ import kotlin.math.roundToInt
 
 @Composable
 fun PokemonBaseStats(
-    pokeDetails: PokemonDetailsResponse,
+    pokemonDetails: PokemonDetailsResponse,
     modifier: Modifier
 ) {
     Column(
@@ -37,7 +37,7 @@ fun PokemonBaseStats(
             .fillMaxWidth()
             .padding(horizontal = 12.dp, vertical = 16.dp)
     ) {
-        pokeDetails.stats.forEach { statResponse ->
+        pokemonDetails.stats.forEach { statResponse ->
             key(statResponse.stat.name) {
                 PokemonStatItem(
                     statResponse = statResponse,

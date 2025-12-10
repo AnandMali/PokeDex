@@ -13,7 +13,7 @@ import javax.inject.Singleton
 object DetailsApiModule {
     @Singleton
     @Provides
-    fun provideInfoAPi(
+    fun provideDetailsAPi(
         retrofit: Retrofit
     ): DetailsApiService {
         return retrofit.create(DetailsApiService::class.java)

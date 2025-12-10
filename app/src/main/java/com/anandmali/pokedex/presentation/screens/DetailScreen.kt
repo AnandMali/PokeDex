@@ -35,9 +35,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.anandmali.pokedex.core.data.Resource
-import com.anandmali.pokedex.core.data.model.createImageUrl
+import com.anandmali.pokedex.presentation.model.createImageUrl
 import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
+import com.anandmali.pokedex.presentation.model.Resource
 import com.anandmali.pokedex.presentation.ui.components.PokemonBaseStats
 import com.anandmali.pokedex.presentation.ui.components.PokemonSize
 import com.anandmali.pokedex.presentation.ui.components.PokemonType
@@ -49,7 +49,7 @@ fun DetailsScreen(
     navController: NavController,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
-    val pokeDetails =
+    val pokemonDetails =
         produceState<Resource<PokemonDetailsResponse>>(initialValue = Resource.Loading()) {
             // TODO fetch pokemon details
         }.value
@@ -81,7 +81,7 @@ fun DetailsScreen(
         modifier = Modifier.background(MaterialTheme.colorScheme.onBackground)
     ) { paddingValues ->
         PokemonDetailStateWrapper(
-            pokemonInfo = pokeDetails,
+            pokemonDetails = pokemonDetails,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
@@ -93,13 +93,13 @@ fun DetailsScreen(
 
 @Composable
 fun PokemonDetailStateWrapper(
-    pokemonInfo: Resource<PokemonDetailsResponse>,
+    pokemonDetails: Resource<PokemonDetailsResponse>,
     modifier: Modifier = Modifier
 ) {
-    when (pokemonInfo) {
+    when (pokemonDetails) {
         is Resource.Success -> {
             PokemonDetailSection(
-                pokeDetails = pokemonInfo.data!!,
+                pokemonDetails = pokemonDetails.data!!,
                 modifier = modifier
             )
         }
@@ -110,7 +110,7 @@ fun PokemonDetailStateWrapper(
                 modifier = Modifier.fillMaxSize()
             ) {
                 Text(
-                    text = pokemonInfo.message!!,
+                    text = pokemonDetails.message!!,
                     color = Color.Red,
                     modifier = modifier
                 )
@@ -132,7 +132,7 @@ fun PokemonDetailStateWrapper(
 
 @Composable
 fun PokemonDetailSection(
-    pokeDetails: PokemonDetailsResponse,
+    pokemonDetails: PokemonDetailsResponse,
     modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()
@@ -145,21 +145,21 @@ fun PokemonDetailSection(
 
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(createImageUrl(pokeDetails.id))
+                .data(createImageUrl(pokemonDetails.id))
                 .build(),
-            contentDescription = pokeDetails.name,
+            contentDescription = pokemonDetails.name,
             contentScale = ContentScale.Fit,
             modifier = Modifier.aspectRatio(1.2f)
         )
 
-        PokemonType(types = pokeDetails.types)
+        PokemonType(types = pokemonDetails.types)
 
         PokemonSize(
-            pokeWeight = pokeDetails.weight,
-            pokeHeight = pokeDetails.height
+            pokemonWeight = pokemonDetails.weight,
+            pokemonHeight = pokemonDetails.height
         )
         PokemonBaseStats(
-            pokeDetails = pokeDetails,
+            pokemonDetails = pokemonDetails,
             modifier = Modifier
                 .padding(top = 12.dp)
                 .fillMaxWidth(.9f)

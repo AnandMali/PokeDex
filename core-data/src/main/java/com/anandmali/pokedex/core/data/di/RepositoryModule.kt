@@ -1,9 +1,9 @@
 package com.anandmali.pokedex.core.data.di
 
-import com.anandmali.pokedex.core.data.repository.pokemonDetails.DetailsRepository
-import com.anandmali.pokedex.core.data.repository.pokemonDetails.DetailsRepositoryImpl
-import com.anandmali.pokedex.core.data.repository.pokemonList.ListRepository
-import com.anandmali.pokedex.core.data.repository.pokemonList.ListRepositoryImpl
+import com.anandmali.pokedex.core.data.pokemonDetails.dataSource.DetailsRepository
+import com.anandmali.pokedex.core.data.pokemonDetails.dataSource.DetailsRepositoryImpl
+import com.anandmali.pokedex.core.data.pokemonList.dataSource.ListRepository
+import com.anandmali.pokedex.core.data.pokemonList.dataSource.ListRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

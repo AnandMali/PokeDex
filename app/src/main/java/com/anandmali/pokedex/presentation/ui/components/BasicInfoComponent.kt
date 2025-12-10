@@ -44,11 +44,11 @@ fun PokemonType(types: List<Type>) {
 
 @Composable
 fun PokemonSize(
-    pokeWeight: Int,
-    pokeHeight: Int
+    pokemonWeight: Int,
+    pokemonHeight: Int
 ) {
-    val weight = remember { pokeWeight / 10f }
-    val height = remember { pokeHeight / 10f }
+    val weight = remember { pokemonWeight / 10f }
+    val height = remember { pokemonHeight / 10f }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -56,14 +56,14 @@ fun PokemonSize(
             .fillMaxWidth()
             .padding(horizontal = 8.dp, vertical = 16.dp)
     ) {
-        PokeSizeData(
+        PokemonSizeData(
             value = weight,
             unit = "kg",
             valueType = stringResource(id = R.string.weight),
             modifier = Modifier.weight(1f)
         )
 
-        PokeSizeData(
+        PokemonSizeData(
             value = height,
             unit = "m",
             valueType = stringResource(id = R.string.height),
@@ -73,7 +73,7 @@ fun PokemonSize(
 }
 
 @Composable
-fun PokeSizeData(
+fun PokemonSizeData(
     value: Float,
     unit: String,
     valueType: String,

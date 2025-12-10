@@ -21,4 +21,12 @@ sealed class DataResult<out L, out R> {
         is Success -> this
     }
 
+    /**
+     * Folds result into a value of type T using the given functions.
+     */
+    inline fun <T> fold(onSuccess: (L) -> T, onError: (R) -> T): T = when (this) {
+        is Success -> onSuccess(value)
+        is Error -> onError(value)
+    }
+
 }

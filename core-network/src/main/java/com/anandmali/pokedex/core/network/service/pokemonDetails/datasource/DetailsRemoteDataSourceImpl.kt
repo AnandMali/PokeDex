@@ -14,12 +14,12 @@ class DetailsRemoteDataSourceImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher,
     private val detailsApiService: DetailsApiService
 ) : DetailsRemoteDataSource {
-    override suspend fun getPokemonInfo(
+    override suspend fun getPokemonDetails(
         name: String
     ): DataResult<PokemonDetailsResponse, DataError> {
         return try {
             withContext(ioDispatcher) {
-                val response = detailsApiService.getPokemonInfo(name)
+                val response = detailsApiService.getPokemonDetails(name)
                 DataResult.Success(response)
             }
         } catch (e: HttpException) {

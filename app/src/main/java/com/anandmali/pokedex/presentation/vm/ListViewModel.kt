@@ -2,7 +2,7 @@ package com.anandmali.pokedex.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.anandmali.pokedex.core.data.repository.pokemonList.ListRepository
+import com.anandmali.pokedex.core.data.pokemonList.dataSource.ListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -12,25 +12,23 @@ class ListViewModel @Inject constructor(
     private val listRepository: ListRepository
 ) : ViewModel() {
 
-//    val pokemonListStatus: Flow<PagingData<PokemonViewDTO>> = pokemonListStatus
-
     init {
         viewModelScope.launch {
-            getPokeList()
+            getPokemonList()
         }
     }
 
-    private fun getPokeList() {
+    private fun getPokemonList() {
         viewModelScope.launch {
-            listRepository.getPokeList()
-                .collect {
-                    println("Fetched list ====> $it")
-                }
-//                .map { data ->
-//                    data.map {
-//                        it.toViewData()
-//                    }
-//                }
+            listRepository.getPokemonList()
+                .fold(
+                    onSuccess = {
+                        println("Fetched list ====> $it")
+                    },
+                    onError = {
+                        println("Error ====> $it")
+                    }
+                )
         }
     }
 }

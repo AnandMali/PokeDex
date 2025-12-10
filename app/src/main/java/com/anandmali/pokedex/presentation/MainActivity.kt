@@ -24,14 +24,14 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination = "pokeList") {
+                NavHost(navController = navController, startDestination = "pokemonList") {
 
-                    composable("PokeList") {
+                    composable("PokemonList") {
                         ListScreen(navController)
                     }
 
                     composable(
-                        "pokeDetails/{pokeName}",
+                        "pokemonDetails/{pokeName}",
                         arguments = listOf(
                             navArgument("pokeName") {
                                 type = NavType.StringType

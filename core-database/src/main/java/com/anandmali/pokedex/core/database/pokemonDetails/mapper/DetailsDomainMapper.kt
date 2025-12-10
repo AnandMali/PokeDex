@@ -1,7 +1,7 @@
 package com.anandmali.pokedex.core.database.pokemonDetails.mapper
 
 import com.anandmali.pokedex.core.database.pokemonDetails.database.DetailsWithRelations
-import com.anandmali.pokedex.core.database.util.DtoMapper
+import com.anandmali.pokedex.core.model.util.DtoMapper
 import com.anandmali.pokedex.core.model.pokemonDetails.domain.PokemonDetailsDomainData
 import com.anandmali.pokedex.core.model.pokemonDetails.domain.StatDomainData
 import com.anandmali.pokedex.core.model.pokemonDetails.domain.TypeDomainData

@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.core.data.model
+package com.anandmali.pokedex.presentation.model
 
 data class PokemonViewDTO(
     val id: Int,
@@ -6,18 +6,6 @@ data class PokemonViewDTO(
     val url: String,
     val imageUrl: String
 )
-
-//fun Pokemon.toViewData(): PokemonViewDTO {
-//    return with(this) {
-//        val index = createId(this.url)
-//        PokemonViewDTO(
-//            id = index,
-//            name = this.name.replaceFirstChar { it.uppercase() },
-//            url = this.url,
-//            imageUrl = createImageUrl(index)
-//        )
-//    }
-//}
 
 fun createImageUrl(index: Int): String {
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$index.png"

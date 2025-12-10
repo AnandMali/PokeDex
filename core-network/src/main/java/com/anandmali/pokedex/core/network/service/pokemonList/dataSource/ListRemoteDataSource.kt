@@ -5,7 +5,7 @@ import com.anandmali.pokedex.core.model.util.DataError
 import com.anandmali.pokedex.core.model.util.DataResult
 
 interface ListRemoteDataSource {
-    suspend fun getPokeList(
+    suspend fun getPokemonList(
         limit: Int,
         offset: Int
     ): DataResult<PokemonListResponse, DataError>

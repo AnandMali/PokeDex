@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.core.data.repository.pokemonList
+package com.anandmali.pokedex.core.data.pokemonList.dataSource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -21,10 +21,10 @@ class ListPagingSource @Inject constructor(
         //Current paging index position
         val position = params.key ?: PAGE_INDEX
 
-        val pokeList = getPokeList(params.loadSize, position)
+        val pokemonList = getPokemonList(params.loadSize, position)
 
         //Create next paging index
-        val nextKey = if (pokeList.size < PAGING_SIZE) {
+        val nextKey = if (pokemonList.size < PAGING_SIZE) {
             null
         } else {
             position + (params.loadSize / PAGING_SIZE)
@@ -32,18 +32,14 @@ class ListPagingSource @Inject constructor(
 
         //Create a paging result for PagingData
         return LoadResult.Page(
-            data = pokeList,
+            data = pokemonList,
             prevKey = if (position == 1) null else position - 1,
             nextKey = nextKey
         )
     }
 
-    private suspend fun getPokeList(loadSize: Int, position: Int): List<Pokemon> {
-        val response = listRemoteDataSource.getPokeList(loadSize, position)
-//        if (response.isSuccessful) {
-//            return response.body()?.let { body -> return body.results }
-//                ?: run { return emptyList() }
-//        }
+    private suspend fun getPokemonList(loadSize: Int, position: Int): List<Pokemon> {
+        // TODO, resolve paging issues and fetch from remote
         return emptyList()
     }
 }

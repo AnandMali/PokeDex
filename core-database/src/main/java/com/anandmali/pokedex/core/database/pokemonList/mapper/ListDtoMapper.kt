@@ -2,7 +2,7 @@ package com.anandmali.pokedex.core.database.pokemonList.mapper
 
 import com.anandmali.pokedex.core.database.pokemonList.model.ListEntity
 import com.anandmali.pokedex.core.model.pokemonList.network.Pokemon
-import com.anandmali.pokedex.core.database.util.DtoMapper
+import com.anandmali.pokedex.core.model.util.DtoMapper
 
 object ListDtoMapper : DtoMapper<List<Pokemon>, List<ListEntity>> {
     override fun map(input: List<Pokemon>): List<ListEntity> {

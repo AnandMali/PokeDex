@@ -1,7 +1,7 @@
 package com.anandmali.pokedex.core.database.pokemonDetails.mapper
 
 import com.anandmali.pokedex.core.database.pokemonDetails.model.DetailsEntity
-import com.anandmali.pokedex.core.database.util.DtoMapper
+import com.anandmali.pokedex.core.model.util.DtoMapper
 import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
 
 object DetailsDtoMapper : DtoMapper<PokemonDetailsResponse, DetailsEntity> {

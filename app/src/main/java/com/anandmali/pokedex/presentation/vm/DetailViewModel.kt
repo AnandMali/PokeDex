@@ -1,7 +1,7 @@
 package com.anandmali.pokedex.presentation.vm
 
 import androidx.lifecycle.ViewModel
-import com.anandmali.pokedex.core.data.repository.pokemonDetails.DetailsRepository
+import com.anandmali.pokedex.core.data.pokemonDetails.dataSource.DetailsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -9,8 +9,7 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(
     private val detailsRepository: DetailsRepository
 ) : ViewModel() {
-
-    suspend fun getPokemonInfo(pokemonName: String) {
+    suspend fun getPokemonDetails(pokemonName: String) {
         //  TODO fetch pokemon details
     }
 }

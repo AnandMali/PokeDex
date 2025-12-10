@@ -29,7 +29,7 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.R
-import com.anandmali.pokedex.core.data.model.PokemonViewDTO
+import com.anandmali.pokedex.presentation.model.PokemonViewDTO
 import com.anandmali.pokedex.presentation.ui.components.ListItemImageAnimator
 import com.anandmali.pokedex.presentation.ui.theme.Purple40
 import com.anandmali.pokedex.presentation.vm.ListViewModel
@@ -41,7 +41,7 @@ fun ListScreen(
     listViewModel: ListViewModel = hiltViewModel()
 ) {
 
-//    val pokeList = listViewModel.pokemonListStatus.collectAsLazyPagingItems()
+//    val pokemonList = listViewModel.pokemonListStatus.collectAsLazyPagingItems()
 
     Surface(
         color = MaterialTheme.colorScheme.onSurface,
@@ -56,10 +56,10 @@ fun ListScreen(
                         .fillMaxWidth(),
                     contentPadding = innerPadding
                 ) {
-//                    items(count = pokeList.itemCount) { index ->
-//                        pokeList[index]?.let {
+//                    items(count = pokemonList.itemCount) { index ->
+//                        pokemonList[index]?.let {
 //                            PokemonListItem(it) {
-//                                navController.navigate("pokeDetails/${it.name}")
+//                                navController.navigate("pokemonDetails/${it.name}")
 //                            }
 //                        }
 //                    }
