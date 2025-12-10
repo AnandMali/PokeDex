@@ -2,14 +2,14 @@ package com.anandmali.pokedex.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.anandmali.pokedex.core.data.pokemonList.dataSource.ListRepository
+import com.anandmali.pokedex.core.domain.pokemonList.usecase.ListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ListViewModel @Inject constructor(
-    private val listRepository: ListRepository
+    private val listUseCase: ListUseCase
 ) : ViewModel() {
 
     init {
@@ -20,7 +20,7 @@ class ListViewModel @Inject constructor(
 
     private fun getPokemonList() {
         viewModelScope.launch {
-            listRepository.getPokemonList()
+            listUseCase.getPokemonList()
                 .fold(
                     onSuccess = {
                         println("Fetched list ====> $it")

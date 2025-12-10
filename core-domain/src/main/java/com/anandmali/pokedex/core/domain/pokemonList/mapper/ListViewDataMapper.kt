@@ -1,8 +1,8 @@
 package com.anandmali.pokedex.core.domain.pokemonList.mapper
 
 import com.anandmali.pokedex.core.domain.pokemonList.model.ListItemViewData
-import com.anandmali.pokedex.core.model.pokemonList.domain.PokemonDomainData
-import com.anandmali.pokedex.core.model.util.DtoMapper
+import com.anandmali.pokedex.core.common.pokemonList.domain.PokemonDomainData
+import com.anandmali.pokedex.core.common.util.DtoMapper
 import com.anandmali.pokedex.core.domain.util.createImageUrl
 
 object ListViewDataMapper : DtoMapper<List<PokemonDomainData>, List<ListItemViewData>> {

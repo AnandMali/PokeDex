@@ -39,7 +39,7 @@ dependencies {
 
     // module dependencies
     implementation(project(":core-data"))
-    implementation(project(":core-model"))
+    implementation(project(":core-common"))
 
     implementation(libs.core.ktx)
 

@@ -57,7 +57,7 @@ dependencies {
 
     // module dependencies
     implementation(project(":core-domain"))
-    implementation(project(":core-model"))
+    implementation(project(":core-common"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

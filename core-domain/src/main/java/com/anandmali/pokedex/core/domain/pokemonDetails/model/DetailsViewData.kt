@@ -1,7 +1,7 @@
 package com.anandmali.pokedex.core.domain.pokemonDetails.model
 
-import com.anandmali.pokedex.core.model.pokemonDetails.domain.StatDomainData
-import com.anandmali.pokedex.core.model.pokemonDetails.domain.TypeDomainData
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.StatDomainData
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.TypeDomainData
 
 data class DetailsViewData(
     val id: Int,

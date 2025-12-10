@@ -5,10 +5,10 @@ import com.anandmali.pokedex.core.database.pokemonDetails.mapper.DetailsDomainMa
 import com.anandmali.pokedex.core.database.pokemonDetails.mapper.DetailsDtoMapper
 import com.anandmali.pokedex.core.database.pokemonDetails.mapper.StatsDtoMapper
 import com.anandmali.pokedex.core.database.pokemonDetails.mapper.TypesDtoMapper
-import com.anandmali.pokedex.core.model.pokemonDetails.domain.PokemonDetailsDomainData
-import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
-import com.anandmali.pokedex.core.model.util.DataError
-import com.anandmali.pokedex.core.model.util.DataResult
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.PokemonDetailsDomainData
+import com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse
+import com.anandmali.pokedex.core.common.util.DataError
+import com.anandmali.pokedex.core.common.util.DataResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

@@ -40,7 +40,7 @@ dependencies {
 
     // module dependencies
     implementation(project(":core-network"))
-    implementation(project(":core-model"))
+    implementation(project(":core-common"))
     implementation(project(":core-database"))
 
     // network retrofit and okHTTP

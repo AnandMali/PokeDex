@@ -2,9 +2,9 @@ package com.anandmali.pokedex.core.data.pokemonDetails.dataSource
 
 import com.anandmali.pokedex.core.data.pokemonDetails.mapper.DetailsDomainMapper
 import com.anandmali.pokedex.core.database.pokemonDetails.dataSource.DetailsLocalDataSource
-import com.anandmali.pokedex.core.model.pokemonDetails.domain.PokemonDetailsDomainData
-import com.anandmali.pokedex.core.model.util.DataError
-import com.anandmali.pokedex.core.model.util.DataResult
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.PokemonDetailsDomainData
+import com.anandmali.pokedex.core.common.util.DataError
+import com.anandmali.pokedex.core.common.util.DataResult
 import com.anandmali.pokedex.core.network.service.pokemonDetails.datasource.DetailsRemoteDataSource
 import javax.inject.Inject
 

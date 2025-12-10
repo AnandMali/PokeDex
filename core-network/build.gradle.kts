@@ -41,8 +41,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core-common"))
     // module dependencies
-    implementation(project(":core-model"))
 
     // network retrofit and okHTTP
     implementation(libs.retrofit.core)

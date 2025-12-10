@@ -37,8 +37,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core-common"))
     // module dependencies
-    implementation(project(":core-model"))
 
     // room database
     implementation(libs.androidx.room.runtime)

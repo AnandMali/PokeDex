@@ -1,12 +1,13 @@
 package com.anandmali.pokedex.core.database.pokemonDetails.mapper
 
 import com.anandmali.pokedex.core.database.pokemonDetails.database.DetailsWithRelations
-import com.anandmali.pokedex.core.model.util.DtoMapper
-import com.anandmali.pokedex.core.model.pokemonDetails.domain.PokemonDetailsDomainData
-import com.anandmali.pokedex.core.model.pokemonDetails.domain.StatDomainData
-import com.anandmali.pokedex.core.model.pokemonDetails.domain.TypeDomainData
+import com.anandmali.pokedex.core.common.util.DtoMapper
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.PokemonDetailsDomainData
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.StatDomainData
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.TypeDomainData
 
-object DetailsDomainMapper : DtoMapper<DetailsWithRelations, PokemonDetailsDomainData> {
+object DetailsDomainMapper :
+    DtoMapper<DetailsWithRelations, PokemonDetailsDomainData> {
     override fun map(input: DetailsWithRelations): PokemonDetailsDomainData {
         return with(input) {
             PokemonDetailsDomainData(

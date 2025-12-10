@@ -23,8 +23,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
-import com.anandmali.pokedex.core.model.pokemonDetails.network.Stat
+import com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse
+import com.anandmali.pokedex.core.common.pokemonDetails.network.Stat
 import kotlin.math.roundToInt
 
 @Composable

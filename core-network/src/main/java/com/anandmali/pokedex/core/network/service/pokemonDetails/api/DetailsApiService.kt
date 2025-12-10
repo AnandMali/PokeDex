@@ -1,6 +1,6 @@
 package com.anandmali.pokedex.core.network.service.pokemonDetails.api
 
-import com.anandmali.pokedex.core.model.pokemonDetails.network.PokemonDetailsResponse
+import com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

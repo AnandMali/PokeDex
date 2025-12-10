@@ -2,7 +2,7 @@ package com.anandmali.pokedex.core.data.pokemonList.dataSource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.anandmali.pokedex.core.model.pokemonList.network.Pokemon
+import com.anandmali.pokedex.core.common.pokemonList.network.Pokemon
 import com.anandmali.pokedex.core.network.service.pokemonList.dataSource.ListRemoteDataSource
 import javax.inject.Inject
 
@@ -13,7 +13,7 @@ class ListPagingSource @Inject constructor(
     private val listRemoteDataSource: ListRemoteDataSource,
 ) : PagingSource<Int, Pokemon>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int {
         TODO("Not yet implemented")
     }
 
