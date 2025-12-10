@@ -41,26 +41,4 @@ class NetworkModule {
         .baseUrl(baseUrl)
         .client(okHttpClient)
         .build()
-
-//    @Singleton
-//    @Provides
-//    fun providePokeApiService(retrofit: Retrofit): PokeApi {
-//        return retrofit.create(PokeApi::class.java)
-//    }
-//
-//    @Singleton
-//    @Provides
-//    fun providePokeRepository(
-//        apiService: PokeApi,
-//        pagingSource: ListPagingSource
-//    ): PokeRepository {
-//        return PokeRepositoryImpl(apiService, pagingSource)
-//    }
-
-//    @Singleton
-//    @Provides
-//    fun providePagingSource(apiService: PokeApi): ListPagingSource {
-//        return ListPagingSource(apiService)
-//    }
-
 }

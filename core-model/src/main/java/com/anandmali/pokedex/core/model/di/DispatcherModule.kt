@@ -1,4 +1,4 @@
-package com.anandmali.pokedex.core.network.di
+package com.anandmali.pokedex.core.model.di
 
 import dagger.Module
 import dagger.Provides
@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)

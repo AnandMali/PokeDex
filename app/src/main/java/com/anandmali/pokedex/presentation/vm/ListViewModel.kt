@@ -27,7 +27,6 @@ class ListViewModel @Inject constructor(
                     println("Fetched list ====> $it")
                 }
 //                .map { data ->
-//                    println("Fetched list ====> ${data.}")
 //                    data.map {
 //                        it.toViewData()
 //                    }
