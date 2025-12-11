@@ -11,12 +11,10 @@ class DetailsUseCaseImpl @Inject constructor(
     private val detailsRepository: DetailsRepository
 ) : DetailsUseCase {
     override suspend fun getDetails(
-        pokemonId: Int,
-        pokemonName: String
+        pokemonId: Int
     ): DataResult<DetailsViewData, DataError> {
         return detailsRepository.getPokemonDetails(
-            pokemonId,
-            pokemonName
+            pokemonId
         ).mapSuccess {
             DetailsViewDataMapper.map(it)
         }

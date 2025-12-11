@@ -13,4 +13,7 @@ interface ListDao {
 
     @Query("SELECT * FROM pokemon_list")
     fun getAll(): List<ListEntity>
+
+    @Query("SELECT name FROM pokemon_list WHERE id = :pokemonId")
+    fun getPokemonNameById(pokemonId: Int): String
 }

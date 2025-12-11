@@ -20,16 +20,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.anandmali.pokedex.R
-import com.anandmali.pokedex.core.common.pokemonDetails.network.Type
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.TypeDomainData
 
 @Composable
-fun PokemonType(types: List<Type>) {
+fun PokemonType(types: List<TypeDomainData>) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(types) {
             Text(
-                text = it.type.name.replaceFirstChar { char -> char.uppercaseChar() },
+                text = it.name.replaceFirstChar { char -> char.uppercaseChar() },
                 fontSize = 18.sp,
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.bodyLarge,

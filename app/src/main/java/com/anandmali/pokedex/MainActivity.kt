@@ -21,20 +21,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PokeDexTheme {
-
                 val navController = rememberNavController()
-
-                NavHost(navController = navController, startDestination = "pokemonList") {
-
-                    composable("PokemonList") {
+                NavHost(
+                    navController = navController,
+                    startDestination = "pokemonList"
+                ) {
+                    composable(
+                        route = "PokemonList"
+                    ) {
                         ListScreen(navController)
                     }
-
                     composable(
-                        "pokemonDetails/{pokeName}",
+                        route = "pokemonDetails/{pokemonId}",
                         arguments = listOf(
-                            navArgument("pokeName") {
-                                type = NavType.Companion.StringType
+                            navArgument("pokemonId") {
+                                type = NavType.IntType
                             }
                         )
                     ) {

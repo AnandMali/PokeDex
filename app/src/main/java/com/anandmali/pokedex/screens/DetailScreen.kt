@@ -23,7 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.produceState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,9 +35,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.anandmali.pokedex.core.domain.pokemonDetails.model.DetailsViewData
 import com.anandmali.pokedex.model.createImageUrl
-import com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse
-import com.anandmali.pokedex.model.Resource
+import com.anandmali.pokedex.state.DetailsUiState
 import com.anandmali.pokedex.ui.components.PokemonBaseStats
 import com.anandmali.pokedex.ui.components.PokemonSize
 import com.anandmali.pokedex.ui.components.PokemonType
@@ -49,11 +49,7 @@ fun DetailsScreen(
     navController: NavController,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
-    val pokemonDetails =
-        produceState<Resource<com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse>>(initialValue = Resource.Loading()) {
-            // TODO fetch pokemon details
-        }.value
-
+    val detailsUiState = viewModel.uiState.collectAsState()
 
     Scaffold(
         topBar = {
@@ -81,7 +77,7 @@ fun DetailsScreen(
         modifier = Modifier.background(MaterialTheme.colorScheme.onBackground)
     ) { paddingValues ->
         PokemonDetailStateWrapper(
-            pokemonDetails = pokemonDetails,
+            pokemonDetails = detailsUiState.value,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
@@ -93,31 +89,31 @@ fun DetailsScreen(
 
 @Composable
 fun PokemonDetailStateWrapper(
-    pokemonDetails: Resource<com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse>,
+    pokemonDetails: DetailsUiState,
     modifier: Modifier = Modifier
 ) {
     when (pokemonDetails) {
-        is Resource.Success -> {
+        is DetailsUiState.Success -> {
             PokemonDetailSection(
-                pokemonDetails = pokemonDetails.data!!,
+                pokemonDetails = pokemonDetails.pokemonDetails,
                 modifier = modifier
             )
         }
 
-        is Resource.Error -> {
+        is DetailsUiState.Error -> {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxSize()
             ) {
                 Text(
-                    text = pokemonDetails.message!!,
+                    text = pokemonDetails.message,
                     color = Color.Red,
                     modifier = modifier
                 )
             }
         }
 
-        is Resource.Loading -> {
+        is DetailsUiState.Loading -> {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxSize()
@@ -132,7 +128,7 @@ fun PokemonDetailStateWrapper(
 
 @Composable
 fun PokemonDetailSection(
-    pokemonDetails: com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse,
+    pokemonDetails: DetailsViewData,
     modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()

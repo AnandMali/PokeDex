@@ -6,7 +6,6 @@ import com.anandmali.pokedex.core.common.util.DataResult
 
 interface DetailsUseCase {
     suspend fun getDetails(
-        pokemonId: Int,
-        pokemonName: String
+        pokemonId: Int
     ): DataResult<DetailsViewData, DataError>
 }

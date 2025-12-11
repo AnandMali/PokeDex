@@ -3,11 +3,13 @@ package com.anandmali.pokedex.screens
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -15,9 +17,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -29,7 +33,8 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.R
-import com.anandmali.pokedex.model.PokemonViewDTO
+import com.anandmali.pokedex.core.domain.pokemonList.model.ListItemViewData
+import com.anandmali.pokedex.state.ListUiState
 import com.anandmali.pokedex.ui.components.ListItemImageAnimator
 import com.anandmali.pokedex.ui.theme.Purple40
 import com.anandmali.pokedex.vm.ListViewModel
@@ -41,7 +46,7 @@ fun ListScreen(
     listViewModel: ListViewModel = hiltViewModel()
 ) {
 
-//    val pokemonList = listViewModel.pokemonListStatus.collectAsLazyPagingItems()
+    val pokemonList = listViewModel.uiState.collectAsState()
 
     Surface(
         color = MaterialTheme.colorScheme.onSurface,
@@ -56,18 +61,49 @@ fun ListScreen(
                         .fillMaxWidth(),
                     contentPadding = innerPadding
                 ) {
-//                    items(count = pokemonList.itemCount) { index ->
-//                        pokemonList[index]?.let {
-//                            PokemonListItem(it) {
-//                                navController.navigate("pokemonDetails/${it.name}")
-//                            }
-//                        }
-//                    }
+                    when (val state = pokemonList.value) {
+                        is ListUiState.Loading -> {
+                            item {
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier.fillMaxSize()
+                                ) {
+                                    CircularProgressIndicator(
+                                        color = MaterialTheme.colorScheme.secondary,
+                                    )
+                                }
+                            }
+                        }
+
+                        is ListUiState.Success -> {
+                            items(state.pokemonList.size) { index ->
+                                state.pokemonList[index].let {
+                                    PokemonListItem(it) {
+                                        navController.navigate("pokemonDetails/${it.id}")
+                                    }
+                                }
+                            }
+                        }
+
+                        is ListUiState.Error -> {
+                            item {
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier.fillMaxSize()
+                                ) {
+                                    Text(
+                                        text = state.message,
+                                        color = Color.Red
+                                    )
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
         )
     }
-
 }
 
 @ExperimentalMaterial3Api
@@ -80,7 +116,7 @@ fun TopBar() {
 
 @Composable
 fun PokemonListItem(
-    poke: PokemonViewDTO,
+    pokemon: ListItemViewData,
     onClick: () -> Unit
 ) {
     Box(
@@ -102,12 +138,12 @@ fun PokemonListItem(
                     .padding(10.dp),
             ) {
                 Text(
-                    text = "#${poke.id}",
+                    text = "#${pokemon.id}",
                     style = MaterialTheme.typography.labelLarge
                 )
 
                 Text(
-                    text = poke.name,
+                    text = pokemon.name,
                     modifier = Modifier.fillMaxHeight(),
                     style = MaterialTheme.typography.headlineLarge
                 )
@@ -121,7 +157,7 @@ fun PokemonListItem(
             child = {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(poke.imageUrl)
+                        .data(pokemon.imageUrl)
                         .build(),
                     error = painterResource(R.drawable.baseline_catching_pokemon_24),
                     contentDescription = stringResource(R.string.description),
@@ -135,7 +171,7 @@ fun PokemonListItem(
 @Composable
 private fun ListItemPreview() {
     PokemonListItem(
-        PokemonViewDTO(
+        ListItemViewData(
             5,
             name = "Pokemon",
             url = "",

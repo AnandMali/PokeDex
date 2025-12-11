@@ -33,4 +33,10 @@ class ListLocalDataSourceImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun getPokemonNameById(pokemonId: Int): String {
+        return withContext(ioDispatcher) {
+            listDao.getPokemonNameById(pokemonId)
+        }
+    }
 }

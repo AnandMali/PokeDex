@@ -33,5 +33,5 @@ interface DetailsDao {
 
     @Transaction
     @Query("SELECT * FROM pokemon_details WHERE id = :id")
-    suspend fun getPokemonDetails(id: Int): DetailsWithRelations
+    suspend fun getPokemonDetails(id: Int): DetailsWithRelations?
 }

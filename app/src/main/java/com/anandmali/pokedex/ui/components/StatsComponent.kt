@@ -23,13 +23,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.anandmali.pokedex.core.common.pokemonDetails.network.PokemonDetailsResponse
-import com.anandmali.pokedex.core.common.pokemonDetails.network.Stat
+import com.anandmali.pokedex.core.common.pokemonDetails.domain.StatDomainData
+import com.anandmali.pokedex.core.domain.pokemonDetails.model.DetailsViewData
 import kotlin.math.roundToInt
 
 @Composable
 fun PokemonBaseStats(
-    pokemonDetails: PokemonDetailsResponse,
+    pokemonDetails: DetailsViewData,
     modifier: Modifier
 ) {
     Column(
@@ -38,7 +38,7 @@ fun PokemonBaseStats(
             .padding(horizontal = 12.dp, vertical = 16.dp)
     ) {
         pokemonDetails.stats.forEach { statResponse ->
-            key(statResponse.stat.name) {
+            key(statResponse.statName) {
                 PokemonStatItem(
                     statResponse = statResponse,
                     modifier = Modifier.padding(vertical = 8.dp)
@@ -51,7 +51,7 @@ fun PokemonBaseStats(
 //TODO, improve the progress calculation and progress bar view.
 @Composable
 internal fun PokemonStatItem(
-    statResponse: Stat,
+    statResponse: StatDomainData,
     modifier: Modifier = Modifier
 ) {
     val animationProgress = remember {
@@ -64,7 +64,7 @@ internal fun PokemonStatItem(
         animationProgress.animateTo(
             targetValue = 1f,
             animationSpec = tween(
-                durationMillis = 8 * statResponse.base_stat,
+                durationMillis = 8 * statResponse.baseStat,
                 easing = LinearEasing
             )
         )
@@ -75,14 +75,14 @@ internal fun PokemonStatItem(
         modifier = modifier
     ) {
 
-        val progress = statResponse.base_stat.toFloat() / 100.toFloat()
+        val progress = statResponse.baseStat.toFloat() / 100.toFloat()
         val animatedProgress = progress * animationProgress.value
 
         val progressColor = MaterialTheme.colorScheme.primary
         val progressTrackColor = MaterialTheme.colorScheme.outline.copy(.1f)
 
         Text(
-            text = statResponse.name,
+            text = statResponse.statName,
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
@@ -115,7 +115,7 @@ internal fun PokemonStatItem(
                 }
         ) {
             Text(
-                text = "${(statResponse.base_stat * animationProgress.value).roundToInt()}",
+                text = "${(statResponse.baseStat * animationProgress.value).roundToInt()}",
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold,
