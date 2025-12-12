@@ -21,7 +21,7 @@ import com.anandmali.pokedex.core.database.pokemonList.model.ListEntity
 )
 abstract class PokedexDatabase : RoomDatabase() {
     companion object {
-        const val DATABASE_NAME = "currency_database"
+        const val DATABASE_NAME = "pokedex_database"
     }
 
     abstract fun listDao(): ListDao

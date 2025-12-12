@@ -34,9 +34,14 @@ class ListLocalDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPokemonNameById(pokemonId: Int): String {
+    override suspend fun getPokemonNameById(pokemonId: Int): DataResult<String, DataError> {
         return withContext(ioDispatcher) {
-            listDao.getPokemonNameById(pokemonId)
+            val name = listDao.getPokemonNameById(pokemonId)
+            if (name.isEmpty()) {
+                DataResult.Error(DataError.NoData)
+            } else {
+                DataResult.Success(name)
+            }
         }
     }
 }

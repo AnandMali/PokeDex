@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -29,29 +30,27 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.R
 import com.anandmali.pokedex.core.domain.pokemonList.model.ListItemViewData
+import com.anandmali.pokedex.nav.AppNavigator
 import com.anandmali.pokedex.state.ListUiState
 import com.anandmali.pokedex.ui.components.ListItemImageAnimator
-import com.anandmali.pokedex.ui.theme.Purple40
 import com.anandmali.pokedex.vm.ListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListScreen(
-    navController: NavHostController,
+    navigator: AppNavigator,
     listViewModel: ListViewModel = hiltViewModel()
 ) {
 
     val pokemonList = listViewModel.uiState.collectAsState()
 
-    Surface(
-        color = MaterialTheme.colorScheme.onSurface,
-        contentColor = Purple40
-    ) {
+    Surface/*(
+        color = MaterialTheme.colorScheme.onSurface
+    )*/ {
         Scaffold(
             topBar = { TopBar() },
             content = { innerPadding ->
@@ -79,7 +78,7 @@ fun ListScreen(
                             items(state.pokemonList.size) { index ->
                                 state.pokemonList[index].let {
                                     PokemonListItem(it) {
-                                        navController.navigate("pokemonDetails/${it.id}")
+                                        navigator.openPokemonDetails(it.id)
                                     }
                                 }
                             }
@@ -110,7 +109,7 @@ fun ListScreen(
 @Composable
 fun TopBar() {
     TopAppBar(
-        title = { Text(text = "Pokemon") }
+        title = { Text(text = "Pokedex") }
     )
 }
 
@@ -123,10 +122,14 @@ fun PokemonListItem(
         modifier = Modifier
             .height(140.dp)
             .clipToBounds()
+
     ) {
         Card(
             shape = MaterialTheme.shapes.medium,
             onClick = onClick,
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.tertiary
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp)

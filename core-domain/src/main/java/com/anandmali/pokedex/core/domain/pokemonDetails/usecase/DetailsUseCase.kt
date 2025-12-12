@@ -8,4 +8,8 @@ interface DetailsUseCase {
     suspend fun getDetails(
         pokemonId: Int
     ): DataResult<DetailsViewData, DataError>
+
+    suspend fun getNameById(
+        pokemonId: Int
+    ): DataResult<String, DataError>
 }

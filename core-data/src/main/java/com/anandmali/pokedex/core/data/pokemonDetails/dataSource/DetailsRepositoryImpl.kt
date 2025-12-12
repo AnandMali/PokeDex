@@ -16,8 +16,8 @@ class DetailsRepositoryImpl @Inject constructor(
 ) : DetailsRepository {
 
     /**
-     * Fetch from local source, check if success, else fetch from remote source
-     * For remote API fetch pokemon name from local for given id
+     * Get from local source, check if success, else fetch from remote source
+     * For remote API get pokemon name from local for given id
      * If remote success, clear local source and insert new data
      * Emit data with success or error
      */
@@ -30,23 +30,34 @@ class DetailsRepositoryImpl @Inject constructor(
                 return DataResult.Success(it)
             },
             onError = {
-                val pokemonName = fetchPokemonName(pokemonId)
-                return fetchFromRemote(pokemonName)
+                val pokemonName = getNameById(pokemonId)
+                pokemonName.fold(
+                    onSuccess = {
+                        return fetchFromRemote(it)
+                    },
+                    onError = {
+                        return DataResult.Error(it)
+                    }
+                )
             }
         )
     }
 
-    private suspend fun fetchFromRemote(pokemonName: String): DataResult<PokemonDetailsDomainData, DataError> {
+    override suspend fun getNameById(
+        pokemonId: Int
+    ): DataResult<String, DataError> {
+        return listLocalDataSource.getPokemonNameById(pokemonId)
+    }
+
+    private suspend fun fetchFromRemote(
+        pokemonName: String
+    ): DataResult<PokemonDetailsDomainData, DataError> {
         return detailsRemoteDataSource
-            .getPokemonDetails(pokemonName)
+            .fetchPokemonDetails(pokemonName)
             .mapSuccess {
                 detailsLocalDataSource.insertPokemonDetails(it)
                 val domainData = DetailsDomainMapper.map(it)
                 return DataResult.Success(domainData)
             }
-    }
-
-    private suspend fun fetchPokemonName(pokemonId: Int): String {
-        return listLocalDataSource.getPokemonNameById(pokemonId)
     }
 }

@@ -22,10 +22,10 @@ class ListViewModel @Inject constructor(
     val uiState: StateFlow<ListUiState> = _uiState
 
     init {
-        fetchPokemonList()
+        getPokemonList()
     }
 
-    private fun fetchPokemonList() {
+    private fun getPokemonList() {
         viewModelScope.launch(ioDispatcher) {
             _uiState.update {
                 ListUiState.Loading

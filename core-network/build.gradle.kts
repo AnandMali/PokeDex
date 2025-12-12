@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
-
 }
 
 android {
@@ -40,9 +39,8 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":core-common"))
     // module dependencies
+    implementation(project(":core-common"))
 
     // network retrofit and okHTTP
     implementation(libs.retrofit.core)
@@ -52,5 +50,4 @@ dependencies {
     // hilt
     implementation(libs.hilt.android.core)
     ksp(libs.hilt.compiler)
-
 }

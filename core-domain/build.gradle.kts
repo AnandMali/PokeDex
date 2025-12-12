@@ -36,12 +36,9 @@ android {
 }
 
 dependencies {
-
     // module dependencies
     implementation(project(":core-data"))
     implementation(project(":core-common"))
-
-    implementation(libs.core.ktx)
 
     // hilt
     implementation(libs.hilt.android.core)

@@ -37,7 +37,7 @@ class DetailsLocalDataSourceImpl @Inject constructor(
 
     override suspend fun getPokemonDetails(id: Int): DataResult<PokemonDetailsDomainData, DataError> {
         return withContext(ioDispatcher) {
-            val result = detailsDao.getPokemonDetails(1)
+            val result = detailsDao.getPokemonDetails(id)
             if (result == null) {
                 DataResult.Error(DataError.NoData)
             } else {

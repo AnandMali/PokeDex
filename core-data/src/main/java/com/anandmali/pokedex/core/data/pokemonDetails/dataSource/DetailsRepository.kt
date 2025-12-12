@@ -8,4 +8,8 @@ interface DetailsRepository {
     suspend fun getPokemonDetails(
         pokemonId: Int
     ): DataResult<PokemonDetailsDomainData, DataError>
+
+    suspend fun getNameById(
+        pokemonId: Int
+    ): DataResult<String, DataError>
 }

@@ -21,9 +21,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,7 +36,6 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anandmali.pokedex.core.domain.pokemonDetails.model.DetailsViewData
-import com.anandmali.pokedex.model.createImageUrl
 import com.anandmali.pokedex.state.DetailsUiState
 import com.anandmali.pokedex.ui.components.PokemonBaseStats
 import com.anandmali.pokedex.ui.components.PokemonSize
@@ -45,10 +44,11 @@ import com.anandmali.pokedex.vm.DetailViewModel
 
 @Composable
 fun DetailsScreen(
-    pokemonName: String,
     navController: NavController,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
+    // Collect states
+    val pokemonName by viewModel.pokemonName.collectAsState()
     val detailsUiState = viewModel.uiState.collectAsState()
 
     Scaffold(
@@ -61,17 +61,13 @@ fun DetailsScreen(
                 },
                 title = {
                     Text(
-                        text = pokemonName.replaceFirstChar { it.uppercaseChar() },
-                        color = MaterialTheme.colorScheme.onBackground,
+                        text = pokemonName,
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.Bold
                         ),
                         modifier = Modifier.fillMaxWidth()
                     )
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent
-                )
             )
         },
         modifier = Modifier.background(MaterialTheme.colorScheme.onBackground)
@@ -138,10 +134,9 @@ fun PokemonDetailSection(
             .fillMaxSize()
             .verticalScroll(scrollState)
     ) {
-
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(createImageUrl(pokemonDetails.id))
+                .data(pokemonDetails.imageUrl)
                 .build(),
             contentDescription = pokemonDetails.name,
             contentScale = ContentScale.Fit,

@@ -19,4 +19,8 @@ class DetailsUseCaseImpl @Inject constructor(
             DetailsViewDataMapper.map(it)
         }
     }
+
+    override suspend fun getNameById(pokemonId: Int): DataResult<String, DataError> {
+        return detailsRepository.getNameById(pokemonId)
+    }
 }

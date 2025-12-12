@@ -5,7 +5,7 @@ import com.anandmali.pokedex.core.common.util.DataError
 import com.anandmali.pokedex.core.common.util.DataResult
 
 interface DetailsRemoteDataSource {
-    suspend fun getPokemonDetails(
+    suspend fun fetchPokemonDetails(
         name: String
     ): DataResult<PokemonDetailsResponse, DataError>
 }

@@ -13,7 +13,7 @@ class ListRepositoryImpl @Inject constructor(
     private val listRemoteDataSource: ListRemoteDataSource,
 ) : ListRepository {
     /**
-     * Fetch from local source, check if success, else fetch from remote source
+     * Get from local source, check if success, else fetch from remote source
      * If remote success, clear local source and insert new data
      * Emit data with success or error
      */
@@ -31,7 +31,7 @@ class ListRepositoryImpl @Inject constructor(
 
     private suspend fun fetchFromRemote(): DataResult<List<PokemonDomainData>, DataError> {
         return listRemoteDataSource
-            .getPokemonList(10, 0)
+            .fetchPokemonList(10, 0)
             .mapSuccess {
                 listLocalDataSource.insertPokemonList(it.results)
                 ListDomainMapper.map(it.results)

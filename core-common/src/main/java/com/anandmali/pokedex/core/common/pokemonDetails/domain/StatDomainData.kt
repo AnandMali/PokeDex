@@ -1,6 +1,5 @@
 package com.anandmali.pokedex.core.common.pokemonDetails.domain
 
-
 data class StatDomainData(
     val statName: String,
     val baseStat: Int,

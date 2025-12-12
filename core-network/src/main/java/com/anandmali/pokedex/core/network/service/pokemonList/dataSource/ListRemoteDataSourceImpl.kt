@@ -14,7 +14,7 @@ class ListRemoteDataSourceImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher,
     private val listApiService: ListApiService
 ) : ListRemoteDataSource {
-    override suspend fun getPokemonList(
+    override suspend fun fetchPokemonList(
         limit: Int,
         offset: Int
     ): DataResult<PokemonListResponse, DataError> {

@@ -37,18 +37,10 @@ android {
 }
 
 dependencies {
-
     // module dependencies
     implementation(project(":core-network"))
     implementation(project(":core-common"))
     implementation(project(":core-database"))
-
-    // network retrofit and okHTTP
-    implementation(libs.retrofit.core)
-    implementation(libs.gson.convertor)
-    implementation(libs.okhttp.loggin)
-    implementation(libs.okhttp.mock.server)
-    implementation(libs.okhttp.profiler)
 
     // paging
     implementation(libs.paging.compose)

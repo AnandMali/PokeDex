@@ -36,9 +36,8 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":core-common"))
     // module dependencies
+    implementation(project(":core-common"))
 
     // room database
     implementation(libs.androidx.room.runtime)
@@ -48,11 +47,4 @@ dependencies {
     // hilt
     implementation(libs.hilt.android.core)
     ksp(libs.hilt.compiler)
-
-    // gson
-    implementation(libs.gson)
-
-    // unit testing
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
 }

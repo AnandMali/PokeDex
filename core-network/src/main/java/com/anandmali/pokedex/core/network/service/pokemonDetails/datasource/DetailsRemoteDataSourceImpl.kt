@@ -14,7 +14,7 @@ class DetailsRemoteDataSourceImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher,
     private val detailsApiService: DetailsApiService
 ) : DetailsRemoteDataSource {
-    override suspend fun getPokemonDetails(
+    override suspend fun fetchPokemonDetails(
         name: String
     ): DataResult<PokemonDetailsResponse, DataError> {
         return try {
