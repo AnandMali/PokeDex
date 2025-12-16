@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
 }
 
@@ -43,11 +43,11 @@ dependencies {
     implementation(project(":core-common"))
 
     // network retrofit and okHTTP
-    implementation(libs.retrofit.core)
-    implementation(libs.gson.convertor)
-    implementation(libs.okhttp.loggin)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging.interceptor)
 
     // hilt
-    implementation(libs.hilt.android.core)
+    implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }

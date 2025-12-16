@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.kapt)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
 }
@@ -59,19 +59,19 @@ dependencies {
     implementation(project(":core-domain"))
     implementation(project(":core-common"))
 
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
     implementation(platform(libs.compose.bom))
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 
     // Hilt
-    implementation(libs.hilt.android.core)
+    implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
     // JVM tests - Hilt
@@ -83,14 +83,14 @@ dependencies {
     kaptAndroidTest(libs.hilt.compiler)
 
     // navigation
-    implementation(libs.navigation)
+    implementation(libs.navigation.compose)
 
     // image loading
-    implementation(libs.coil)
+    implementation(libs.coil.compose)
 
     // hilt navigation compose
-    implementation(libs.hilt.nav.compose)
+    implementation(libs.hilt.navigation.compose)
 
     // compose material icons
-    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.compose.material.icons.extended)
 }

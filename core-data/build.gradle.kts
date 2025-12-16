@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
 }
 
@@ -46,6 +46,6 @@ dependencies {
     implementation(libs.paging.compose)
 
     // hilt
-    implementation(libs.hilt.android.core)
+    implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }
